@@ -8,7 +8,6 @@ package ie.cit.cloudapp;
 		private String pwd;
 		private String email;
 		private String home;
-		private Boolean addtrip;
 		private Integer id;
 		
 		/**
@@ -74,18 +73,7 @@ package ie.cit.cloudapp;
 		public void setHome(String home) {
 			this.home = home;
 		}
-		/**
-		 * @return the addtrip
-		 */
-		public Boolean getAddtrip() {
-			return addtrip;
-		}
-		/**
-		 * @param addtrip the addtrip to set
-		 */
-		public void setAddtrip(Boolean addtrip) {
-			this.addtrip = addtrip;
-		}
+	
 		
 	}
 

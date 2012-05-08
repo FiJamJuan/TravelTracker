@@ -10,7 +10,9 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.access.annotation.Secured;
 
+@Secured("ROLE_USER")
 public class jdbcTripRepository {
 
 	private JdbcTemplate jdbcTemplate;
@@ -32,6 +34,8 @@ public class jdbcTripRepository {
 				.query("select id, deptdate, exitdate, departure, destination, route, username, days from TRIPS where username = ? order by id asc",
 						new Object[] { username }, new TripMapper());
 	}
+	
+	
 
 	public List<Trip> getDeptDate(String destination, String username,String deptdate) {
 		return jdbcTemplate
@@ -54,7 +58,6 @@ class TripMapper implements RowMapper<Trip> {
 		trip.setExitdate(rs.getString("exitdate"));
 		trip.setDestination(rs.getString("destination"));
 		trip.setRoute(rs.getString("route"));
-		// trip.setUserid(rs.getInt("userid"));
 		trip.setId(rs.getInt("id"));
 		trip.setUsername(rs.getString("username"));
 		trip.setDays(rs.getInt("days"));
@@ -62,3 +65,5 @@ class TripMapper implements RowMapper<Trip> {
 
 	}
 }
+	
+	

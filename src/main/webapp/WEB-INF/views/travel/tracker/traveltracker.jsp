@@ -45,33 +45,45 @@
 		
 		var dayslash=e.indexOf("/");
 		var monthslash=e.lastIndexOf("/");
+		var depdayslash=c.indexOf("/");
+		var depmonthslash=c.lastIndexOf("/");
+		var dtc = new Date(c);
+		var dte = new Date(e); 
 		
-		if (isNaN(c.substr(0,2)) || isNaN(c.substr(3,2)) || isNaN(c.substr(6,4)))
-	      {
-		  alert("Not a valid departure date, should be in numeric dd/mm/yyyy format");
-		  return false;
-		  }
 		
 		if (dayslash!=2 || monthslash!=5 || e.length!=10 )
 		  {
-		  alert("Not a valid departure date, should be in dd/mm/yyyy format");
-		  return false;
-		  }
-		
-		var depdayslash=c.indexOf("/");
-		var depmonthslash=c.lastIndexOf("/");
-
-		if (isNaN(c.substr(0,2)) || isNaN(c.substr(3,2)) || isNaN(c.substr(6,4)))
-	      {
-		  alert("Not a valid exit date, should be in numeric dd/mm/yyyy format");
+		  alert("Not a valid exit date, should be in dd/mm/yyyy format");
 		  return false;
 		  }
 		
 		if (depdayslash!=2 || depmonthslash!=5 || c.length!=10 )
 		  {
-		  alert("Not a valid exit date, should be in dd/mm/yyyy format");
+		  alert("Not a valid departure date, should be in dd/mm/yyyy format");
 		  return false;
 		  }
+
+		if (isNaN(dtc))
+			{
+			alert("Departure date is not a valid date, please use dd/mm/yyyy format");
+			  return false;
+			}
+		
+		if (isNaN(dte))
+		{
+		alert("Exit date is not a valid date, please use dd/mm/yyyy format");
+		  return false;
+		}  
+		
+		 
+        if (dte < dtc)
+        	{
+        	alert("Exit date should be > or = to departure date.");
+  		    return false;
+        	
+        	}
+		
+       
 	}
 //-->
 </script>
@@ -100,42 +112,44 @@
 			<c:if test="${existingtrip}">
 				              <div class="warning">  Please check the data - the departure date and destination were the same as an existing trip.
 				               <br/> No new data added. </div>
-				                </c:if>
-				                <c:if test="${dateformaterror}">
-				              <div class="warning">  Date format error, please enter date in format "DD/MM/YYYY"</div>
-				                </c:if>
+		   </c:if>
+	     
 			</br>
 			<div class="normal">
 				<form name="Addtrip" method="post" onsubmit="return validateForm();">
 					<div class="Route">
 						<div class="trip">Route Id:</div>
-						<input name="route"><br />
+						<input name="route"><br />*
 					</div>
 					<!--end  Route -->
 					<div class="Out">
 						<u>Outbound</u> </br>
 						<div class="trip">Departure Country (From):</div>
-						<input name="departure">
+						<input name="departure">*
 						<div class="trip">Date of Departure:</div>
-						<input name="strdeptdate"> <br />dd/mm/yyyy
+						<input name="strdeptdate"> * <br /> dd/mm/yyyy
 					</div>
 					<!--end  Out -->
 					<div class="Return">
 						<u>Return</u> </br>
 						<div class="trip">Destination Country (To):</div>
-						<input name="destination">
+						<input name="destination">*
 						<div class="trip">Date of Exit:</div>
-						<input name="strexitdate"> <br />dd/mm/yyyy
+						<input name="strexitdate"> * <br /> dd/mm/yyyy
 						<br/>
-						<input value="Add Trip" type="submit">
-					</div>  <!--end  Return -->
-						
+							<input value="Add Trip" type="submit">
 		
+					</div>  <!--end  Return -->
+				
 				</form>
 			</div>
 			<!--end  Normal -->
          <br/>
+         
+
 			<div class="Table">
+		    <div class="normal">Note * indicates a required field.</div>
+			<div class="normal-left">Trip Data</div>
 				<table border="1">
 					<tr>
 						<th>Route</th>

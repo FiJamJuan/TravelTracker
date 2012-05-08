@@ -15,7 +15,6 @@ public class SecurityLoginController {
 		@RequestMapping(method = RequestMethod.GET)
 		public void getTravelTracker(Model model) {	
 			//
-			
 		}
 		
 		@RequestMapping(params="error", method = RequestMethod.GET)

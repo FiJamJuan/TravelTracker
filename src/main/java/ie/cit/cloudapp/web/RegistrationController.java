@@ -36,28 +36,25 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegistrationController {
 	@Autowired
 	private jdbcUserRepository userrepo;
-
-	private UserInfo userinfo = new UserInfo();
-	public String usermessage;
-	public Integer count;
-	public String message ="";
 	
+	private UserInfo userinfo = new UserInfo();
+	private Boolean userexists;
+
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void main(Model model) {	
-	
-		//return "registeruser";
-		
+		userexists = false;
+		//return "registeruser", with userexists = false.
+		model.addAttribute("userexists",userexists);
+
 	}
 
-	//SecurityContextHolder.getContext().getAuthentication().getName()
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String registerUserData(Model model, @RequestParam String username,
 			@RequestParam String pwd, @RequestParam String home,
 			@RequestParam String email) throws IOException, NoSuchAlgorithmException {
 		//add the user to the database
-		Boolean userexists=false;
 		if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
 			//clear session data
 			SecurityContextHolder.getContext().setAuthentication(null);
@@ -66,23 +63,18 @@ public class RegistrationController {
 		{
 			userexists = true;
 			model.addAttribute("userexists",userexists);
-			return ("redirect:../../travel/login/registeruser.html");
-		    
+			return ("redirect:../../travel/login/registeruser.html");    
 		}
-	
-	
-		userinfo.setUsername(username);
-		userinfo.setEmail(email);
 		// create md5 hash of password
 		hashPassword hpw = new hashPassword();
 		String pass = hpw.md5password(pwd);
-	
+		
+		userinfo.setUsername(username);
+		userinfo.setEmail(email);
 		userinfo.setPwd(pass);
 		userinfo.setHome(home);
-		userinfo.setAddtrip(true);
 		userrepo.save(userinfo);
 	    ///return to login page
-	
 	    return ("redirect:../../travel/tracker/traveltracker.html");
 	  
 

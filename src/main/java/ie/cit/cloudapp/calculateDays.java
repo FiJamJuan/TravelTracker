@@ -11,7 +11,7 @@ private Date enddate;
 private Date date;
 private Integer days;
 
-
+// source of the below: stackoverflow.com
 public Date StrToDate(String strDate) throws ParseException{
 
 	

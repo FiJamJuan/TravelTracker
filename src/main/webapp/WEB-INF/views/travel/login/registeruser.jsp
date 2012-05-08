@@ -16,8 +16,7 @@ var x=document.forms["Register"]["pwd"].value;
 var y=document.forms["Register"]["cpwd"].value;
 if ((c==null || c=="") & (a==null || a=="") & (b==null || b=="") & (x==null || x=="") & (y==null || y==""))
 	{
-	
-alert("This form does not contain any data. Please complete the required information in order to register.")
+alert("This form does not contain any data. Please complete the required information in order to register.");
 return false;
 	}
 	
@@ -56,11 +55,7 @@ if (b==null || b=="")
 {
 alert("Please enter your Home Country.");
 return false;
-} 
-
-
-
-
+}
 }
 //-->
 </script>
@@ -78,7 +73,7 @@ return false;
 <div class="warning">
 <c:if test="${userexists}">
   This username already exists, please select another.
-<br/> User not added. </c:if>
+<br/> User not added. </c:if> 
 </div>
 <h2>Register User</h2>
 				<div class="login">To start please enter some user details

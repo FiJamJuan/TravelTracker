@@ -37,7 +37,7 @@
 </div> <!--end RightPage-->
 </div> <!--end Body-->
 <div class="DescriptionBanner">
-<h3>This is a simple tool that can be used to record and track trips between different countries and calculate days spent in a particular country. This data can then be leveraged for various purposes, such as tax residency.</h3>
+<h3>This is a simple tool that can be used to record and track trips between different countries and calculate days spent in a particular country. This data can then be leveraged for various purposes to track days in each country.</h3>
 </div> <!--end DescrptionBanner-->
 </div> <!-- end OuterFrame -->
 </body>

@@ -10,6 +10,7 @@ import java.util.Date;
 import ie.cit.cloudapp.Trip;
 import ie.cit.cloudapp.UserInfo;
 import ie.cit.cloudapp.calculateDays;
+import ie.cit.cloudapp.currentUser;
 import ie.cit.cloudapp.jdbcTripRepository;
 import ie.cit.cloudapp.jdbcUserRepository;
 
@@ -34,14 +35,16 @@ public class TravelController {
 	private jdbcUserRepository userrepo;
 	@Autowired
 	private jdbcTripRepository triprepo;
-    public String uname;
-    public UserInfo userinfo = new UserInfo();
+    public currentUser currentusr = new currentUser();
+   
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void getTravelTracker(Model model) {	
-		userinfo.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
-		model.addAttribute("trips", triprepo.getAllTrips(SecurityContextHolder.getContext().getAuthentication().getName()));
-		model.addAttribute("user", userrepo.getUserData(SecurityContextHolder.getContext().getAuthentication().getName()));
+		currentusr.setCurrentUser(SecurityContextHolder.getContext().getAuthentication().getName());
+		model.addAttribute("trips", triprepo.getAllTrips(currentusr.getCurrentUser()));
+		model.addAttribute("user", userrepo.getUserData(currentusr.getCurrentUser()));
+		
+		
 		
 	}
 	
@@ -52,13 +55,11 @@ public class TravelController {
 		Trip trip = new Trip();
 		Boolean existingtrip = false;
 		calculateDays calcdays = new calculateDays();
-		
-	
 		Date deptdate =calcdays.StrToDate(strdeptdate); 
 		Date exitdate =calcdays.StrToDate(strexitdate);
 	
 		
-		if (! triprepo.getDeptDate(destination, userinfo.getUsername(), strdeptdate).isEmpty())
+		if (! triprepo.getDeptDate(destination, currentusr.getCurrentUser(), strdeptdate).isEmpty())
 			// just display stored trips for this user
 		{
 			existingtrip=true;
@@ -70,23 +71,22 @@ public class TravelController {
 			trip.setDeparture(departure);
 			trip.setDestination(destination);
 			trip.setRoute(route);
-			trip.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+			trip.setUsername(currentusr.getCurrentUser());
 			//calculate days and store with trip data
-			
 		    trip.setDays((int) calcdays.daysBetween(calcdays.DateToCalendar(deptdate),calcdays.DateToCalendar(exitdate)));
-		
+	        // save to the database
 		    triprepo.save(trip);
 		}
 
-		model.addAttribute("trips", triprepo.getAllTrips(SecurityContextHolder.getContext().getAuthentication().getName()));
-		model.addAttribute("user", userrepo.getUserData(SecurityContextHolder.getContext().getAuthentication().getName()));
+		model.addAttribute("trips", triprepo.getAllTrips(currentusr.getCurrentUser()));
+		model.addAttribute("user", userrepo.getUserData(currentusr.getCurrentUser()));
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE)
 	public void deleteTrip(Model model, @RequestParam int tripId) {
 		triprepo.delete(tripId);
-		model.addAttribute("trips", triprepo.getAllTrips(SecurityContextHolder.getContext().getAuthentication().getName()));
-		model.addAttribute("user", userrepo.getUserData(SecurityContextHolder.getContext().getAuthentication().getName()));
+		model.addAttribute("trips", triprepo.getAllTrips(currentusr.getCurrentUser()));
+		model.addAttribute("user", userrepo.getUserData(currentusr.getCurrentUser()));
 	
 	}
 

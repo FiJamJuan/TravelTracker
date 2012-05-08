@@ -22,34 +22,23 @@ public class jdbcUserRepository {
 		}
 		
 		public void save(UserInfo userinfo){
-			jdbcTemplate.update("insert into USERDATA(username, pwd, email,home, addtrip ) values (?,?,?,?,?)",userinfo.getUsername(), userinfo.getPwd(),  userinfo.getEmail(), userinfo.getHome(), userinfo.getAddtrip());
 			jdbcTemplate.update("insert into users (username, password,enabled) values (?, ?, 'true')",userinfo.getUsername(), userinfo.getPwd());
 			jdbcTemplate.update("INSERT into authorities (username, authority) values (?,'ROLE_USER')", userinfo.getUsername());		
+			jdbcTemplate.update("insert into USERDATA(username, email,home ) values (?,?,?)",userinfo.getUsername(),  userinfo.getEmail(), userinfo.getHome());
 
 		}
-		
 
 	
 		public List<UserInfo> getAll(){
-			return jdbcTemplate.query("select id, username, pwd, email, home, addtrip from USERDATA", new UserMapper());
+			return jdbcTemplate.query("select id, username, email, home from USERDATA", new UserMapper());
 		}
 		
 		public List<UserInfo> getUserData(String username){
-			return jdbcTemplate.query("select id, username, pwd, email, home, addtrip from USERDATA where username=?", new Object[]{username}, new UserMapper());
-		}
-		
-		public Map<String,Object> getUserPwd(String username){
-			return jdbcTemplate.queryForMap("select pwd from USERDATA where username=?", new Object[]{username});
-		}
-		
-		public void delete(int id){
-			jdbcTemplate.update("delete from USERDATA where id=?", id);
+			return jdbcTemplate.query("select id, username, email, home from USERDATA where username=?", new Object[]{username}, new UserMapper());
 		}
 		
 		
-		public void updateAddtrip(Boolean addtrip, String username){
-			jdbcTemplate.update("update USERDATA set addtrip=? where username =?", addtrip, username);
-		}
+		
 		
 		
 	}
@@ -57,10 +46,8 @@ public class jdbcUserRepository {
 			public UserInfo mapRow(ResultSet rs, int rowNum) throws SQLException{
 				UserInfo userinfo = new UserInfo();
 				userinfo.setEmail(rs.getString("email"));
-				userinfo.setPwd(rs.getString("pwd"));
 				userinfo.setEmail(rs.getString("home"));
 				userinfo.setUsername(rs.getString("username"));
-				userinfo.setAddtrip(rs.getBoolean("addtrip"));
 				userinfo.setId(rs.getInt("id"));
 				
 				

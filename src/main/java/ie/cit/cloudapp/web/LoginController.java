@@ -31,10 +31,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/travel/login/main")
 public class LoginController {
-
-	public String usermessage;
-	public Integer count;
-	public String message ="";
 	
 	
 	@RequestMapping(method = RequestMethod.GET)

@@ -39,6 +39,15 @@ font-family: 'Comic Sans MS', cursive;
 text-align: center;
 font-size: Medium;
 }
+div.button{
+position: relative;
+top: 250px;
+left: -500px;
+color: black;
+font-family: 'Comic Sans MS', cursive;
+text-align: right;
+font-size: Medium;
+}
 div.normal-left{
 font-family: 'Comic Sans MS', cursive;
 color: black;
@@ -54,6 +63,12 @@ div.login{
 font-family: 'Comic Sans MS', cursive;
 color: black;
 font-size: Large;
+}
+div.loginwindow
+{
+position: absolute;
+text-align: center;
+	
 }
 div.LeftPage{
 position: absolute;
@@ -142,7 +157,6 @@ max-height: 550px;
 min-height: 550px;
 }
 div.InnerFrame{
-position: absolute;
 max-width: 1000px;
 min-width: 1000px;
 }
@@ -158,9 +172,6 @@ max-width: 900px;
 min-width: 900px;
 margin: 20px 10px 5px 10px;
 padding: 10px 10px 5px 10px;
-}
-div.AddTrip{
-
 }
 div.Out{
 position: absolute;
@@ -193,8 +204,8 @@ border-color: #808080;
 
 }
 div.Table{
-position: absolute;
-top: 400px;
+position: relative;
+top: 200px;
 left: 100px;
 min-width: 900px;
 margin: 20px 10px 10px 10px;
