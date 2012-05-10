@@ -62,6 +62,7 @@ public class RegistrationController {
 		if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
 			//clear session data
 			SecurityContextHolder.getContext().setAuthentication(null);
+		userexists = false;
 		//first check if existing user.
 		if (! userrepo.getUserData(username).isEmpty())
 		{
