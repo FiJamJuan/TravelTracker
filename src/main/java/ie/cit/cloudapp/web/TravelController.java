@@ -4,11 +4,11 @@
 package ie.cit.cloudapp.web;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 import ie.cit.cloudapp.Trip;
-import ie.cit.cloudapp.UserInfo;
+
 import ie.cit.cloudapp.calculateDays;
 import ie.cit.cloudapp.currentUser;
 import ie.cit.cloudapp.jdbcTripRepository;
@@ -21,7 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
 
 /**
  * @author fiona

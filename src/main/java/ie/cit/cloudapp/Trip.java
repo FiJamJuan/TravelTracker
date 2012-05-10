@@ -1,7 +1,5 @@
 package ie.cit.cloudapp;
 
-import java.util.Date;
-
 public class Trip {
 	/**
 	 * 

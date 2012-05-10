@@ -20,11 +20,10 @@ ${error}<br/></div>
 
 Login with Username and Password<form name='f' action='../../j_spring_security_check' method='POST'>
 
-<br />
-
-    User: <input type='text' name='j_username' value=''><br />
-    Password:<input type='password' name='j_password'/><br />
-    <br/><center><input name="submit" type="submit" value="login"/></center></form><br />	
+    User: <input type='text' name='j_username'><br />
+    Password:<input type='password' name='j_password'><br />
+    <br/><center><input name="submit" type="submit" value="login"/></center>
+    </form><br />	
     <form method="get"><input type="hidden" name="home" value="home"><input type="submit" value="HOME"></form>
 
 

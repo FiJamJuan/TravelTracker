@@ -3,25 +3,13 @@
  */
 package ie.cit.cloudapp.web;
 
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import ie.cit.cloudapp.Trip;
-import ie.cit.cloudapp.UserInfo;
-import ie.cit.cloudapp.calculateDays;
-import ie.cit.cloudapp.jdbcTripRepository;
-import ie.cit.cloudapp.jdbcUserRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author fiona
@@ -35,10 +23,10 @@ public class LoginController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void main(Model model) {	
-		if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
+	if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
 			//clear any previous session data and force user to login or register
-			SecurityContextHolder.getContext().setAuthentication(null);
-		//return "main";
+	SecurityContextHolder.getContext().setAuthentication(null);
+		
 	}
 
 

@@ -17,6 +17,7 @@ public class SecurityLoginController {
 			//
 		}
 		
+		
 		@RequestMapping(params="home", method = RequestMethod.GET)
 		public String home(Model model) {	
 			//return to start/homepage
