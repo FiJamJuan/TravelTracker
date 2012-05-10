@@ -46,11 +46,9 @@ public class jdbcUserRepository {
 			public UserInfo mapRow(ResultSet rs, int rowNum) throws SQLException{
 				UserInfo userinfo = new UserInfo();
 				userinfo.setEmail(rs.getString("email"));
-				userinfo.setEmail(rs.getString("home"));
+				userinfo.setHome(rs.getString("home"));
 				userinfo.setUsername(rs.getString("username"));
 				userinfo.setId(rs.getInt("id"));
-				
-				
 				return userinfo;
 				
 			}

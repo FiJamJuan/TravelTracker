@@ -38,17 +38,21 @@ public class RegistrationController {
 	private jdbcUserRepository userrepo;
 	
 	private UserInfo userinfo = new UserInfo();
-	private Boolean userexists;
+	private Boolean userexists = false;
 
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void main(Model model) {	
-		userexists = false;
-		//return "registeruser", with userexists = false.
+		//return "registeruser"
 		model.addAttribute("userexists",userexists);
 
 	}
 
+	@RequestMapping(params="home", method = RequestMethod.GET)
+	public String home(Model model) {	
+		//return to start/homepage
+		return ("redirect:../../travel/login/main.html");    
+	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String registerUserData(Model model, @RequestParam String username,

@@ -70,15 +70,16 @@ return false;
 <h1>Travel Tracker</h1>
 </div> <!--end TopBanner-->
 <div class="Register">
-<div class="warning">
-<c:if test="${userexists}">
-  This username already exists, please select another.
-<br/> User not added. </c:if> 
-</div>
+		
 <h2>Register User</h2>
 				<div class="login">To start please enter some user details
 					here:</div>
-				</br>
+					<div class="warning">
+<c:if test="${userexists}">
+  This username already exists, please select another.
+<br/> User not added.</c:if>
+</div>
+				<br />
 					${count}
 					
 					<form name="Register" method="post" onsubmit="return validateForm();">
@@ -98,11 +99,18 @@ return false;
 					<input name="home">*
 					
 					<div class="login"></div>
+					<br/>
 					<input value="Register" type="submit" value="registernewuser">
 					
 				</form>
+						    <br />
+		<div class="normal">
+			<form method="get"><input type="hidden" name="home" value="home"><input type="submit" value="HOME"></form>
+		</div>
+		<br />
 			    Note * indicates a required field.
 			    </div> <!--end Register-->
+	
 </div> <!--end OuterFrame-->
 </body>
 </html>

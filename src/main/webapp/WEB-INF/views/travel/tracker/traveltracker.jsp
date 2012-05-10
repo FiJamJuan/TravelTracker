@@ -8,83 +8,68 @@
 <html>
 <script type="text/javascript">
 <!--
-	function validateForm() {
-		var a = document.forms["Addtrip"]["route"].value;
-		var b = document.forms["Addtrip"]["departure"].value;
-		var c = document.forms["Addtrip"]["strdeptdate"].value;
-		var d = document.forms["Addtrip"]["destination"].value;
-		var e = document.forms["Addtrip"]["strexitdate"].value;
-		if ((a == null || a == "") & (b == null || b == "")
-				& (c == null || c == "") & (d == null || d == "")
-				& (e == null || e == "")) {
+function validateForm() {
+	var a = document.forms["Addtrip"]["route"].value;
+	var b = document.forms["Addtrip"]["departure"].value;
+	var c = document.forms["Addtrip"]["strdeptdate"].value;
+	var d = document.forms["Addtrip"]["destination"].value;
+	var e = document.forms["Addtrip"]["strexitdate"].value;
+	var dayslash=e.indexOf("/");
+	var monthslash=e.lastIndexOf("/");
+	var depdayslash=c.indexOf("/");
+	var depmonthslash=c.lastIndexOf("/");
+	var dtc = new Date(document.forms["Addtrip"]["strdeptdate"].value);
+	var dte = new Date(document.forms["Addtrip"]["strexitdate"].value); 
+	
+	if ((a == null || a == "") & (b == null || b == "")
+			& (c == null || c == "") & (d == null || d == "")
+			& (e == null || e == "")) {
 
-			alert("This new trip does not contain any data!")
-			return false;
-		}
-		if (a == null || a == "") {
-			alert("Please enter a Route Id (e.g. FLight Number).");
-			return false;
-		}
-		if (b == null || b == "") {
-			alert("Please enter a Departure Country.");
-			return false;
-		}
-		if (c == null || c == "") {
-			alert("Please enter a Departure Date, dd/mm/yyyy.");
-			return false;
-		}
-		if (d == null || d == "") {
-			alert("Please enter a Destination Coutry.");
-			return false;
-		}
-
-		if (e == null || e == "") {
-			alert("Please enter an Exit Date, dd/mm/yyyy.");
-			return false;
-		}
-		
-		var dayslash=e.indexOf("/");
-		var monthslash=e.lastIndexOf("/");
-		var depdayslash=c.indexOf("/");
-		var depmonthslash=c.lastIndexOf("/");
-		var dtc = new Date(c);
-		var dte = new Date(e); 
-		
-		
-		if (dayslash!=2 || monthslash!=5 || e.length!=10 )
-		  {
-		  alert("Not a valid exit date, should be in dd/mm/yyyy format");
-		  return false;
-		  }
-		
-		if (depdayslash!=2 || depmonthslash!=5 || c.length!=10 )
-		  {
-		  alert("Not a valid departure date, should be in dd/mm/yyyy format");
-		  return false;
-		  }
-
-		if (isNaN(dtc))
-			{
-			alert("Departure date is not a valid date, please use dd/mm/yyyy format");
-			  return false;
-			}
-		
-		if (isNaN(dte))
-		{
-		alert("Exit date is not a valid date, please use dd/mm/yyyy format");
-		  return false;
-		}  
-		
-		 
-        if (dte < dtc)
-        	{
-        	alert("Exit date should be > or = to departure date.");
-  		    return false;
-        	
-        	}
-		
-       
+		alert("This new trip does not contain any data!")
+		return false;
 	}
+	if (a == null || a == "") {
+		alert("Please enter a Route Id (e.g. FLight Number).");
+		return false;
+	}
+	if (b == null || b == "") {
+		alert("Please enter a Departure Country.");
+		return false;
+	}
+	if (c == null || c == "") {
+		alert("Please enter a Departure Date, dd/mm/yyyy.");
+		return false;
+	}
+	if (d == null || d == "") {
+		alert("Please enter a Destination Coutry.");
+		return false;
+	}
+
+	if (e == null || e == "") {
+		alert("Please enter an Exit Date, dd/mm/yyyy.");
+		return false;
+	}
+
+	if (dayslash!=2 || monthslash!=5 || e.length!=10 || isNaN(dte.getDate()))
+	  {
+	  alert("Not a valid exit date, should be in dd/mm/yyyy format");
+	  return false;
+	  }	
+	if (depdayslash!=2 || depmonthslash!=5 || c.length!=10 || isNaN(dtc.getDate()))
+	  {
+	  alert("Not a valid departure date, should be in dd/mm/yyyy format");
+	  return false;
+	  }
+
+	if (dte < dtc)
+  	{
+  	alert("Exit date should be > or = to departure date.");
+	    return false;
+  	
+  	}
+
+}
+
 //-->
 </script>
 <head>

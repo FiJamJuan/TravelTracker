@@ -17,6 +17,13 @@ public class SecurityLoginController {
 			//
 		}
 		
+		@RequestMapping(params="home", method = RequestMethod.GET)
+		public String home(Model model) {	
+			//return to start/homepage
+			return ("redirect:../../travel/login/main.html");    
+		}
+		
+		
 		@RequestMapping(params="error", method = RequestMethod.GET)
 		public String getLoginError(Model model, @RequestParam String error) {	
 			
