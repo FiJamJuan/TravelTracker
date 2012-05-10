@@ -18,8 +18,8 @@
 
 <div class="Body">
 <div class="LeftPage">
-	<h2>Login</h2></br>
-<div class="login">If you are an existing user please <u>Login</u> here:</div></br>
+	<h2>Login</h2><br/>
+<div class="login">If you are an existing user please <u>Login</u> here:</div><br/>
 <form method="post">
 		<input name="userlogin" value="Proceed to Login" type="submit">
 		</form>
@@ -27,8 +27,8 @@
 		</div><!--end LeftPage-->
 	<div class="RightPage">	
 
-	<h2>Register</h2></br>
-<div class="login">If you are a new user please <u>Register</u> here:</div></br>
+	<h2>Register</h2><br/>
+<div class="login">If you are a new user please <u>Register</u> here:</div><br/>
   <form method="post" >
     	<input name="select" value="register" type="hidden">
 	<input name="registeruser" value="Proceed to Register" type="submit">
@@ -37,7 +37,11 @@
 </div> <!--end RightPage-->
 </div> <!--end Body-->
 <div class="DescriptionBanner">
-<h3>This is a simple tool that can be used to record and track trips between different countries and calculate days spent in a particular country. This data can then be leveraged for various purposes to track days in each country.</h3>
+<h2>Application Description</h2>
+<div class="normal">This is a simple tool that can be used to record trips between different countries and calculate days spent at the destination country.
+<br/> This data can then be leveraged for various purposes to track days spent outside your home country.<br/>
+To get started all you need to do is register. Then you can login and enter your trip details to start tracking them.<br/>
+</div>
 </div> <!--end DescrptionBanner-->
 </div> <!-- end OuterFrame -->
 </body>
