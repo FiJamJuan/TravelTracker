@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@RequestMapping("/travel/login/main")
+@RequestMapping("/login/main")
 public class LoginController {
 	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void main(Model model) {	
-	if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
+	//if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
 			//clear any previous session data and force user to login or register
-	SecurityContextHolder.getContext().setAuthentication(null);
+	//SecurityContextHolder.getContext().setAuthentication(null);
 		
 	}
 
@@ -34,7 +34,7 @@ public class LoginController {
 	@RequestMapping(params="select", method = RequestMethod.POST)
 	public String register(Model model, @RequestParam String select) {
 	model.addAttribute("select",select);
-			return "redirect:../../travel/login/registeruser.html";
+			return "redirect:/login/registeruser.html";
 	
 	
 	
@@ -42,7 +42,7 @@ public class LoginController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String login(Model model) {
-			return "redirect:../../travel/tracker/traveltracker.html";
+			return "redirect:../traveltracker.html";
 	
 	
 	

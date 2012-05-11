@@ -73,7 +73,7 @@ function validateForm() {
 //-->
 </script>
 <head>
-<link rel="stylesheet" href="../../style/style.css" />
+<link rel="stylesheet" href="./style/style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Travel Tracker</title>
 </head>
@@ -86,7 +86,7 @@ function validateForm() {
 
 		<br />
 		<div class="normal">
-			<a href="../../j_spring_security_logout">Logout </a>
+			<a href="./j_spring_security_logout">Logout </a>
 		</div>
 		<br />
 		

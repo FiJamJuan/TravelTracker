@@ -63,7 +63,7 @@ return false;
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Travel Tracker</title>
 </head>
-<link rel="stylesheet" href="../../style/style.css" />
+<link rel="stylesheet" href="../style/style.css" />
 <body>
 <div class="OuterFrame">
 <div class="TopBanner">

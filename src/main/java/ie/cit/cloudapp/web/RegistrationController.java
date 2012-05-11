@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@RequestMapping("travel/login/registeruser")
+@RequestMapping("/login/registeruser")
 public class RegistrationController {
 	@Autowired
 	private jdbcUserRepository userrepo;
@@ -44,7 +44,7 @@ public class RegistrationController {
 	@RequestMapping(params="home", method = RequestMethod.GET)
 	public String home(Model model) {	
 		//return to start/homepage
-		return ("redirect:../../travel/login/main.html");    
+		return ("redirect:/login/main.html");    
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
@@ -52,16 +52,16 @@ public class RegistrationController {
 			@RequestParam String pwd, @RequestParam String home,
 			@RequestParam String email) throws IOException, NoSuchAlgorithmException {
 		//add the user to the database
-	   if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
+	  // if (! SecurityContextHolder.getContext().getAuthentication().getName().isEmpty())
 			//clear session data
-	   SecurityContextHolder.getContext().setAuthentication(null);
+	 //  SecurityContextHolder.getContext().setAuthentication(null);
 	
 		//first check if existing user.
 		if (! userrepo.getUserData(username).isEmpty())
 		{
 			userexists = true;
 			model.addAttribute("userexists",userexists);
-			return ("redirect:../../travel/login/registeruser.html");    
+			return ("redirect:/login/registeruser.html");    
 		}
 		// create md5 hash of password
 		hashPassword hpw = new hashPassword();
@@ -73,7 +73,7 @@ public class RegistrationController {
 		userinfo.setHome(home);
 		userrepo.save(userinfo);
 	    ///return to login page
-	    return ("redirect:../../travel/tracker/traveltracker.html");
+	    return ("redirect:/traveltracker.html");
 	  
 
 	}
