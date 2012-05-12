@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
 @Controller
-@RequestMapping("traveltracker")
+@RequestMapping("/travel/tracker/traveltracker")
 public class TravelController {
 	@Autowired
 	private jdbcUserRepository userrepo;

@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Travel Tracker</title>
 </head>
-<link rel="stylesheet" href="./style/style.css" />
+<link rel="stylesheet" href="../../style/style.css" />
 </head><body onload='document.f.j_username.focus();'>
 <div class="OuterFrame">
 <div class="TopBanner">
@@ -18,7 +18,7 @@
 ${error}<br/></div>
 <div class="normal">
 
-Login with Username and Password<form name='f' action='../j_spring_security_check' method='POST'>
+Login with Username and Password<form name='f' action='../../j_spring_security_check' method='POST'>
 
     User: <input type='text' name='j_username'><br />
     Password:<input type='password' name='j_password'><br />

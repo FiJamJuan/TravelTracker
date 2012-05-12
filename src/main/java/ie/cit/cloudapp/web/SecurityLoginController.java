@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/login.html")
+@RequestMapping("/travel/login/login")
 public class SecurityLoginController {
 //controller to render login.html for username and password
 
@@ -21,16 +21,16 @@ public class SecurityLoginController {
 		@RequestMapping(params="home", method = RequestMethod.GET)
 		public String home(Model model) {	
 			//return to start/homepage
-			return ("redirect:/login/main.html");    
+			return ("redirect:../../travel/login/main.html");    
 		}
 		
 		
 		@RequestMapping(params="error", method = RequestMethod.GET)
-		public void getLoginError(Model model, @RequestParam String error) {	
+		public String getLoginError(Model model, @RequestParam String error) {	
 			
 				String errormsg="Access denied - incorrect username or password. Please try again.";
 				model.addAttribute("error", errormsg);
-				//return ("/login");
+				return ("/travel/login/login");
 
 			
 		}
